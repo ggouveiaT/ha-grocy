@@ -10,7 +10,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG GROCY_VERSION="v4.6.0"
+ARG GROCY_BRANCH="mealplan-shoppinglist-fix"
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
@@ -38,8 +38,8 @@ RUN \
         npm=11.11.0-r0 \
         php85-phar=8.5.5-r1 \
     \
-    && git clone --branch "${GROCY_VERSION}" --depth=1 \
-        https://github.com/grocy/grocy.git /var/www/grocy \
+    && git clone --branch "${GROCY_BRANCH}" --depth=1 \
+        https://github.com/ggouveiaT/grocy.git /var/www/grocy \
     \
     && cd /var/www/grocy \
     \
